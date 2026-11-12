@@ -1,1 +1,42 @@
+1.
+Retorna todos os registros da tabela à esquerda, mesmo sem correspondência na tabela à direita.
 
+2.
+Vantagem: Mostra todos os registros, inclusive os sem correspondência.
+
+Desvantagem: Pode gerar valores NULL e resultados maiores.
+
+3.
+SELECT c.*, l.*
+FROM cliente c
+LEFT JOIN loja l ON c.id_cliente = l.id_cliente;
+
+4.
+SELECT c.nome, l.valor
+FROM cliente c
+LEFT JOIN loja l ON c.id_cliente = l.id_cliente
+ORDER BY l.valor ASC;
+
+5.
+SELECT c.nome, l.valor
+FROM cliente c
+LEFT JOIN loja l ON c.id_cliente = l.id_cliente
+ORDER BY c.nome ASC;
+
+6.
+SELECT c.nome, l.valor
+FROM cliente c
+LEFT JOIN loja l ON c.id_cliente = l.id_cliente
+ORDER BY l.valor DESC
+LIMIT 1;
+
+7.
+SELECT c.nome, c.idade
+FROM cliente c
+LEFT JOIN loja l ON c.id_cliente = l.id_cliente
+ORDER BY c.idade DESC;
+
+8.
+LEFT JOIN: Mostra todos os registros da tabela à esquerda, mesmo sem correspondência.
+
+INNER JOIN: Mostra apenas os registros que possuem correspondência nas duas tabelas.
