@@ -1,12 +1,22 @@
-select PERSONAGEM.personagem
-from PERSONAGEM
-inner join ATOR
-on ATOR.codAtor = PERSONAGEM.codAtor
-where ATOR.nomereal = 'James Carrey';
+1.
+SELECT p.nome, a.nome_artistico
+FROM atores a
+INNER JOIN papeis p ON a.id = p.ator_id
+WHERE a.nome = 'Maria da Silva';
 
+2.
+SELECT f.titulo, p.nome AS papel
+FROM atores a
+INNER JOIN papeis p ON a.id = p.ator_id
+INNER JOIN filmes f ON p.filme_id = f.id
+WHERE a.nome = 'Jim Carrey';
 
+3.
+USE consulta;
 
-select ATOR.NomeArtistico, PERSONAGEM.personagem
-from ATOR
-inner join PERSONAGEM on ATOR.codAtor = PERSONAGEM.codAtor
-where ATOR.NomeReal = 'Maria da Silva';
+SELECT p.nome AS paciente, m.nome AS medico, c.data
+FROM consultas c
+INNER JOIN pacientes p ON c.paciente_id = p.id
+INNER JOIN medicos m ON c.medico_id = m.id
+WHERE c.data >= '2025-04-01'
+AND c.data < '2025-05-01';
