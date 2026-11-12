@@ -1,1 +1,28 @@
+1.
+SELECT p.nome, COALESCE(r.pontos, 0) AS pontos
+FROM pilotos p
+LEFT JOIN resultados_corrida r
+ON p.id = r.piloto_id AND r.gp = 'GP de Interlagos';
 
+2.
+SELECT fm.nome AS fabricante,
+COUNT(p.id) AS quantidade_pilotos
+FROM equipes e
+RIGHT JOIN fabricantes_motor fm ON e.motor_id = fm.id
+RIGHT JOIN equipes e2 ON e2.motor_id = fm.id
+RIGHT JOIN pilotos p ON p.equipe_id = e2.id
+GROUP BY fm.id, fm.nome
+ORDER BY quantidade_pilotos DESC;
+
+3.
+SELECT e.id, e.nome, e.motor_id
+FROM fabricantes_motor fm
+RIGHT JOIN equipes e ON fm.id = e.motor_id
+WHERE fm.id IS NULL;
+
+4.
+a) Retorna todos os pilotos com suas equipes e fabricantes. Pilotos sem equipe aparecem com valores NULL.
+
+b) Retorna apenas os pilotos que possuem resultados no GP de Interlagos, com seus pontos.
+
+c) Retorna somente as equipes que não possuem pilotos cadastrados.
